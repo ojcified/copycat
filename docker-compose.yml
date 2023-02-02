@@ -1,0 +1,27 @@
+version: "2"
+services:
+  node:
+    container_name: "server"
+    image: "node:latest"
+    user: "node"
+    depends_on:
+      copycat:
+        condition: service_completed_successfully
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - node:/home/node/app
+    ports:
+      - "8081:8081"
+    command: "npm install"
+    command: "npm start"
+
+  copycat:
+    container_name: "helper"
+    image: "copycat:latest"
+    volumes:
+      - ./upload:/home/copycat/upload
+      - node:/home/copycat/download
+volumes:
+  node:
