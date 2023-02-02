@@ -7,3 +7,5 @@ Dabei soll das Image nicht verändert werden, solange keine Versionsänderung st
 Weiterhin soll eine Brücke geschaffen werden, durch die Code von außen bzw. der Entwicklung in das Volume überführt wird, sodass die App nur durch einen Neustart die Codeänderungen übernimmt.
 
 Der Ansatz war, durch einen zweiten Container das Volume und einen lokalen Ordner zu mounten und über den die Änderungen zu kopieren und danach den Container zu beenden.
+
+Als Sicherheitsaspekt soll die Applikation keinen direkten Mount zum Muttersystem haben.
